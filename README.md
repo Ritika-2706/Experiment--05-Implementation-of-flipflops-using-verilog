@@ -109,32 +109,95 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Ritika S
+RegisterNumber:  212221240046
 */
+## SR Flipflop:
+```
+module flipflop(s,r,Q,Qbar,clk);
+input s,r,clk;
+output reg Q,Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=s|(Q&(~r));
+Qbar=r|(Qbar&(~s));
+end
+endmodule
+```
 
+## JK Flipflop
+```
+module jkflipflop(k,clk,j,Q,Qbar);
+input k,clk,j;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=((~Q)&j)|(Q&~k);
+Qbar=(~Qbar&k)|(Qbar&~j);
+end
+endmodule
+```
 
+## D Flipflop
+```
+module dflipflop(d,clk,q,qbar);
+input d,clk;
+output q,qbar;
+reg q,qbar;
+initial q=0;
+initial qbar=1;
+always @(posedge clk)
+begin 
+q<=d;
+qbar<=~d;
+end
+endmodule
+```
 
-
-
-
-### RTL LOGIC FOR FLIPFLOPS 
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
+## T Flipflop
+```
+module tflipflop(t,clk,q,qbar);
+input t,clk;
+output q,qbar;
+reg q,qbar;
+initial q=0;
+initial qbar=0;
+always @(posedge clk)
+begin 
+q<=(t&~q)|(~t&q);
+qbar<=~q;
+end
+endmodule
+```
+## RTL LOGIC FOR SR FLIPFLOPS
+![Output](P1.png)
+## RTL LOGIC FOR JK FLIPFLOPS
+![Output](P2.jpg)
+## RTL LOGIC FOR D FLIPFLOPS
+![Output](P3.png)
+## RTL LOGIC FOR T FLIPFLOPS
+![Output](P4.png)
+## Waveform Output For SR
+![Output](P5.png)
+## Waveform Output For JK
+![Output](P6.png)
+## Waveform Output For D
+![Output](P7.png)
+## Waveform Output For T
+![Output](P8.png)
+## Truth table For SR
+![Output](P9.png)
+## Truth table For JK
+![Output](P10.png)
+## Truth table For D
+![Output](P11.png)
+## Truth table For T
+![Output](P12.png)
 
 ### RESULTS 
+Thus the flipflops circuits are designed and the truth tables is verified using quartus software.
